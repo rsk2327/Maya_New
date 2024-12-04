@@ -8,8 +8,7 @@
 
 ## Contents
 - [Install](#install)
-- [Model Weights](#model-weights)
-- [Demo](#Demo)
+- [Model Weights and Dataset](#model-weights-and-dataset)
 - [Dataset](#dataset)
 - [Train](#train)
 - [Evaluation](#evaluation)
