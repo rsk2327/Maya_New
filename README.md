@@ -69,7 +69,7 @@ In no particular order
 - [Snegha A]()
 - [Anthony Susevski](https://github.com/asusevski)
 - [Ashvanth.S]()
-- [Genta Indra Winata]()
+- [Genta Indra Winata](https://github.com/gentaiscool)
 - [Ryan Chan](https://github.com/rchan26)
 - [Sangyeon Kim](https://github.com/KimSangYeon-DGU)
 - [Snehanshu](https://github.com/pilot-j)
