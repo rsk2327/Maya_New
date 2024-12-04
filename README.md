@@ -1,7 +1,7 @@
 # Maya: Multimodal Multilingual LLM
 
 - Models and Dataset at [HuggingFace](https://huggingface.co/maya-multimodal)
-- Paper: 
+- Paper: arXiv link TBD
 
 
 
@@ -95,6 +95,21 @@ bash scripts/maya/finetune_aya_siglip.sh
 ```
 
 ## Evaluation
+
+For multilingual evaluation using PALO multilingual test dataset
+- Download the PALO evaluation dataset: Create the following directory structure if it doesn't exist.
+  ```
+  LLaVA/playground/data/eval
+  git clone https://huggingface.co/datasets/MBZUAI/multilingual-llava-bench-in-the-wild
+  ```
+- Run the evaluation script
+```
+bash scripts/v1_5/eval/eval_all_languages.sh \
+    "model_base" \
+    "model_path" \
+    "model_name" \
+    "your-openai-api-key"
+```
 
 
 ## Citation
