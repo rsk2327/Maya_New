@@ -47,6 +47,13 @@ pip install chardet==5.2.0 datasets==2.15.0 deepspeed==0.14.2 fastapi==0.111.0 t
 
 ## Train
 
+To pretrain the projection layer, 
+- get the pretraining dataset from [HuggingFace](https://huggingface.co/maya-multimodal) and keep it in `/dev/data/LLaVA_Pretrain`
+- get the images with `wget https://huggingface.co/datasets/liuhaotian/LLaVA-Pretrain/resolve/main/images.zip` and keep them in `/dev/data/images`
+  
+```
+bash scripts/maya/pretrain_aya_siglip.sh
+```
 ## Evaluation
 
 
