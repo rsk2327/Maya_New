@@ -47,6 +47,8 @@ pip install chardet==5.2.0 datasets==2.15.0 deepspeed==0.14.2 fastapi==0.111.0 t
 
 ## Train
 
+### Pretraining
+
 To pretrain the projection layer, 
 - get the pretraining dataset from [HuggingFace](https://huggingface.co/maya-multimodal) and keep it in `/dev/data/LLaVA_Pretrain`
 - get the images with `wget https://huggingface.co/datasets/liuhaotian/LLaVA-Pretrain/resolve/main/images.zip` and keep them in `/dev/data/images`
@@ -54,6 +56,44 @@ To pretrain the projection layer,
 ```
 bash scripts/maya/pretrain_aya_siglip.sh
 ```
+
+### Instruction Tuning
+Please download the annotations from [MBZUAI/palo_multilingual_dataset](https://huggingface.co/datasets/MBZUAI/palo_multilingual_dataset) and all images following the below links.
+
+
+- COCO: [train2017](http://images.cocodataset.org/zips/train2017.zip)
+- GQA: [images](https://downloads.cs.stanford.edu/nlp/data/gqa/images.zip)
+- OCR-VQA: [download script](https://drive.google.com/drive/folders/1_GYPY5UkUy7HIcR0zq3ZCFgeZN7BAfm_?usp=sharing),
+- TextVQA: [train_val_images](https://dl.fbaipublicfiles.com/textvqa/images/train_val_images.zip)
+- VisualGenome: [part1](https://cs.stanford.edu/people/rak248/VG_100K_2/images.zip), [part2](https://cs.stanford.edu/people/rak248/VG_100K_2/images2.zip)
+
+After downloading all of them, organize the data as follows in `/dev/data/instruction_tune_dataset/`,
+
+
+```
+instruction_tune_dataset
+    ├── coco
+    │   └── train2017
+    ├── gqa
+    │   └── images
+    ├── ocr_vqa
+    │   └── images
+    ├── textvqa
+    │   └── train_images
+    └── vg
+        ├── VG_100K
+        └── VG_100K_2
+```
+
+Put the `palo_multilingual_dataset.json` in `/dev/data/annotations/palo_multilingual_dataset.json`
+
+Make sure to keep the pretrained model you have in a path that you specify in the `scripts/maya/finetune_aya_siglip.sh` script throught the `--pretrain_mm_mlp_adapter` flag
+
+Then run
+```
+bash scripts/maya/finetune_aya_siglip.sh
+```
+
 ## Evaluation
 
 
