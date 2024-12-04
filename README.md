@@ -42,11 +42,9 @@ pip install chardet==5.2.0 datasets==2.15.0 deepspeed==0.14.2 fastapi==0.111.0 t
 
 ```
 
-## Model Weights
+## Model Weights and Dataset
+[HuggingFace](https://huggingface.co/maya-multimodal)
 
-## Demo
-
-## Dataset
 
 ## Train
 
