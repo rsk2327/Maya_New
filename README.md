@@ -130,7 +130,7 @@ In no particular order
 - [Chen Liu]()
 - [Snegha A]()
 - [Anthony Susevski](https://github.com/asusevski)
-- [Ashvanth.S]()
+- [Ashvanth.S](https://github.com/ash-01xor)
 - [Genta Indra Winata](https://github.com/gentaiscool)
 - [Ryan Chan](https://github.com/rchan26)
 - [Sangyeon Kim](https://github.com/KimSangYeon-DGU)
