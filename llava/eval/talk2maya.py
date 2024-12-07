@@ -1,16 +1,15 @@
-import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"  # Limit visibility to only GPU 0
-
 # Global Variables (Model, Tokenizer, Image Processor)
 model_base = "CohereForAI/aya-23-8B"
-model_path = "nahidalam/maya_full_ft"  # toxicity-free: nahidalam/maya_toxicity_free_finetuned
+model_path = "maya-multimodal/maya" # toxicity-free: nahidalam/maya_toxicity_free_finetuned
 mode = "finetuned"  # Options: 'finetuned' or 'pretrained'
 projector_path = None  # Required if mode is 'pretrained'
 
 import torch
-import argparse
+import os
 from PIL import Image
+import matplotlib.pyplot as plt
 import textwrap
+import argparse
 
 from llava.constants import (
     IMAGE_TOKEN_INDEX,
@@ -26,9 +25,6 @@ from llava.mm_utils import tokenizer_image_token, process_images
 # Disable Torch initialization to save memory
 disable_torch_init()
 
-# Specify the device to use
-device = torch.device("cuda:0")
-
 def load_model(model_base, model_path, mode="finetuned", projector_path=None):
     """
     Load the Maya model along with tokenizer and image processor.
@@ -40,23 +36,16 @@ def load_model(model_base, model_path, mode="finetuned", projector_path=None):
     if mode == "pretrained" and projector_path is None:
         raise ValueError("Error: Projector path is required when mode is 'pretrained'")
 
-    model, tokenizer, image_processor, content_len = load_maya_model(
+    model, tokenizer, image_processor, _ = load_maya_model(
         model_base, model_path, projector_path if mode == "pretrained" else None, mode
     )
 
-    # Move model to specified device and set to evaluation mode
-    model = model.half().to(device)
+    # Move model to GPU and set to evaluation mode
+    model = model.half().cuda()
     model.eval()
-    
-    # Ensure all parameters and buffers are on the same device
-    for param in model.parameters():
-        param.data = param.data.to(device)
-        if param._grad is not None:
-            param._grad.data = param._grad.data.to(device)
-    for buffer in model.buffers():
-        buffer.data = buffer.data.to(device)
 
     return model, tokenizer, image_processor
+
 
 # Load the model (only do this once)
 model, tokenizer, image_processor = load_model(
@@ -69,6 +58,12 @@ model, tokenizer, image_processor = load_model(
 def validate_image_file(image_path):
     """
     Validate that the image file exists and is in a supported format.
+
+    Parameters:
+    - image_path (str): Path to the image file.
+
+    Returns:
+    - bool: True if the file is valid, False otherwise.
     """
     if not os.path.isfile(image_path):
         print(f"Error: File {image_path} does not exist.")
@@ -83,11 +78,23 @@ def validate_image_file(image_path):
         print(f"Error: {image_path} is not a valid image file. {e}")
         return False
 
+
 def run_vqa_model(
     image_file, question, conv_mode="aya", temperature=0.2, top_p=None, num_beams=1
 ):
     """
     Perform Visual Question Answering on a specified image file.
+
+    Parameters:
+    - image_file (str): Path to the image file.
+    - conv_mode (str): Conversation mode template to use.
+    - temperature (float): Sampling temperature.
+    - top_p (float): Nucleus sampling probability.
+    - num_beams (int): Number of beams for beam search.
+    - question (str): The question to ask about the image.
+
+    Returns:
+    - answer (str): The model's answer to the question.
     """
     # Validate the image file
     if not validate_image_file(image_file):
@@ -115,18 +122,19 @@ def run_vqa_model(
     input_ids = (
         tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors="pt")
         .unsqueeze(0)
-        .to(device)
+        .cuda()
     )
 
     # Open and process the image
     image = Image.open(image_file).convert("RGB")
-    image_tensor = process_images([image], image_processor, model.config)[0].to(device)
+    image_tensor = process_images([image], image_processor, model.config)[0]
+
 
     # Generate the answer using the model
     with torch.inference_mode():
         output_ids = model.generate(
             input_ids,
-            images=image_tensor.unsqueeze(0),
+            images=image_tensor.unsqueeze(0).half().cuda(),
             image_sizes=[image.size],
             do_sample=True if temperature > 0 else False,
             temperature=temperature,
@@ -147,14 +155,15 @@ def run_vqa_model(
 
     return answer
 
+
 # Main function to handle argument parsing
 def main():
     parser = argparse.ArgumentParser(description="Run Visual Question Answering with Maya model.")
     parser.add_argument("question", type=str, help="The question to ask about the image.")
     parser.add_argument("image_file", type=str, help="Path to the image file.")
-    
+
     args = parser.parse_args()
-    
+
     # Run the VQA model
     run_vqa_model(
         question=args.question,
@@ -163,4 +172,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
