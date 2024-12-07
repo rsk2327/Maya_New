@@ -1,7 +1,7 @@
 # Maya: Multimodal Multilingual LLM
 
 - Models and Dataset at [HuggingFace](https://huggingface.co/maya-multimodal)
-- Paper: arXiv link TBD
+- Paper: arXiv link coming soon
 
 
 
