@@ -1,17 +1,23 @@
 # Maya: Multimodal Multilingual LLM
 
 - Models and Dataset at [HuggingFace](https://huggingface.co/maya-multimodal)
-- Paper: arXiv link TBD
+- Paper: arXiv link coming soon
 
 
 
 
 ## Contents
-- [Install](#install)
-- [Model Weights and Dataset](#model-weights-and-dataset)
-- [Dataset](#dataset)
-- [Train](#train)
-- [Evaluation](#evaluation)
+- [Maya: Multimodal Multilingual LLM](#maya-multimodal-multilingual-llm)
+  - [Contents](#contents)
+  - [Install](#install)
+  - [Model Weights and Dataset](#model-weights-and-dataset)
+  - [Train](#train)
+    - [Pretraining](#pretraining)
+    - [Instruction Tuning](#instruction-tuning)
+  - [Evaluation](#evaluation)
+  - [Citation](#citation)
+  - [Contributors](#contributors)
+  - [Acknowledgement](#acknowledgement)
 
 ## Install
 
@@ -118,7 +124,7 @@ If you find Maya useful for your research and applications, please cite using th
 
 ## Contributors
 In no particular order
-- Team Leads: Nahid, Karthik, Surya
+- Team Leads: [Nahid Alam](https://github.com/nahidalam), [Karthik Reddy](https://github.com/Karthikreddyk99), [Surya Guthikonda](https://github.com/SuryaKrishna02)
 - [Timothy Chung](https://github.com/timothycdc)
 - [Abhipsha Das](https://github.com/chiral-carbon)
 - [Bala Krishna S Vegesna](https://github.com/Satyajitv)
