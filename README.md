@@ -21,6 +21,8 @@
 
 ## Install
 
+The following steps worked on a `CUDA Version: 12.4`. 
+
 1. Clone this repository and navigate to maya directory
 ```bash
 git clone https://github.com/nahidalam/maya
@@ -38,14 +40,9 @@ pip install -e .
 3. Install additional packages for training cases
 ```
 pip install -e ".[train]"
-pip install flash-attn --no-build-isolation
+pip install flash-attn==2.6.3 --no-build-isolation --no-cache-dir
 ```
 
-4. We upgraded a few libraries so install them now or feel free to update the `pyproject.toml` file
-```
-pip install chardet==5.2.0 datasets==2.15.0 deepspeed==0.14.2 fastapi==0.111.0 transformers==4.42.3 accelerate==0.27.2
-
-```
 
 ## Model Weights and Dataset
 [HuggingFace](https://huggingface.co/maya-multimodal)
