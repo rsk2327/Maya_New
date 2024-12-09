@@ -38,7 +38,7 @@ pip install -e .
 3. Install additional packages for training cases
 ```
 pip install -e ".[train]"
-pip install flash-attn --no-build-isolation
+pip install flash-attn==2.6.3 --no-build-isolation --no-cache-dir
 ```
 
 4. We upgraded a few libraries so install them now or feel free to update the `pyproject.toml` file
