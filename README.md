@@ -4,7 +4,7 @@
 - Paper: [arXiv](https://arxiv.org/abs/2412.07112)
 
 
-
+##### Multimodal LLM supporting 8 languages including English, Chinese, French, Spanish, Russian, Japanese, Arabic, Hindi
 
 ## Contents
 - [Maya: Multimodal Multilingual LLM](#maya-multimodal-multilingual-llm)
