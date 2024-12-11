@@ -118,6 +118,17 @@ bash scripts/v1_5/eval/eval_all_languages.sh \
 ## Citation
 
 If you find Maya useful for your research and applications, please cite using this BibTeX:
+```
+@misc{alam2024mayainstructionfinetunedmultilingual,
+      title={Maya: An Instruction Finetuned Multilingual Multimodal Model}, 
+      author={Nahid Alam and Karthik Reddy Kanjula and Surya Guthikonda and Timothy Chung and Bala Krishna S Vegesna and Abhipsha Das and Anthony Susevski and Ryan Sze-Yin Chan and S M Iftekhar Uddin and Shayekh Bin Islam and Roshan Santhosh and Snegha A and Drishti Sharma and Chen Liu and Isha Chaturvedi and Genta Indra Winata and Ashvanth. S and Snehanshu Mukherjee and Alham Fikri Aji},
+      year={2024},
+      eprint={2412.07112},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2412.07112}, 
+}
+```
 
 ## Contributors
 In no particular order
