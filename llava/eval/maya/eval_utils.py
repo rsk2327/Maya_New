@@ -48,8 +48,8 @@ def load_maya_model(model_base: str, model_path : str, projector_path : Optional
 
     device_map = 'auto'
     kwargs = {"device_map": device_map}
-    kwargs['torch_dtype'] = torch.float16
-    kwargs['attn_implementation'] = 'flash_attention_2'
+    kwargs['torch_dtype'] = torch.float32
+    #kwargs['attn_implementation'] = 'flash_attention_2'
 
     ## Instantiating tokenizer and model base
     tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)

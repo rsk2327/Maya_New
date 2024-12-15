@@ -105,6 +105,7 @@ For multilingual evaluation using PALO multilingual test dataset
   LLaVA/playground/data/eval
   git clone https://huggingface.co/datasets/MBZUAI/multilingual-llava-bench-in-the-wild
   ```
+- Specifically test images can be found [here](https://huggingface.co/datasets/MBZUAI/multilingual-llava-bench-in-the-wild/tree/main/images)
 - Run the evaluation script
 ```
 bash scripts/v1_5/eval/eval_all_languages.sh \
