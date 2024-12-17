@@ -2,12 +2,14 @@
 
 - Models and Dataset at [HuggingFace](https://huggingface.co/maya-multimodal)
 - Paper: [arXiv](https://arxiv.org/abs/2412.07112)
+- Try Maya Model: [Demo](https://huggingface.co/spaces/kkr5155/maya_demo)
 
 
 ##### Multimodal LLM supporting 8 languages including English, Chinese, French, Spanish, Russian, Japanese, Arabic, Hindi
 
 ## Contents
 - [Maya: Multimodal Multilingual LLM](#maya-multimodal-multilingual-llm)
+        - [Multimodal LLM supporting 8 languages including English, Chinese, French, Spanish, Russian, Japanese, Arabic, Hindi](#multimodal-llm-supporting-8-languages-including-english-chinese-french-spanish-russian-japanese-arabic-hindi)
   - [Contents](#contents)
   - [Install](#install)
   - [Model Weights and Dataset](#model-weights-and-dataset)
