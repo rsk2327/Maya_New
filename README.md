@@ -2,9 +2,10 @@
 
 - Models and Dataset at [HuggingFace](https://huggingface.co/maya-multimodal)
 - Paper: [arXiv](https://arxiv.org/abs/2412.07112)
+- Try Maya Model: [Demo](https://huggingface.co/spaces/kkr5155/maya_demo)
 
 
-##### Multimodal LLM supporting 8 languages including English, Chinese, French, Spanish, Russian, Japanese, Arabic, Hindi
+<b>Multimodal LLM supporting 8 languages including English, Chinese, French, Spanish, Russian, Japanese, Arabic, Hindi</b>
 
 ## Contents
 - [Maya: Multimodal Multilingual LLM](#maya-multimodal-multilingual-llm)
@@ -157,6 +158,3 @@ In no particular order
 - This codebase is based on [LLaVA](https://github.com/haotian-liu/LLaVA). Thank you for the easily understable codebase.
 - This project would not be possible without the support of Cohere and their Aya-35B API grant. We are thankful to Sara Hooker, Madeline, Shivalika, Shristhi and the entire Cohere for AI team for their support.
 - We thank Pytho for their generaous GPU grant 
-
-
-
