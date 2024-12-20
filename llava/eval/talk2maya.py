@@ -41,7 +41,7 @@ def load_model(model_base, model_path, mode="finetuned", projector_path=None):
     )
 
     # Move model to GPU and set to evaluation mode
-    model = model.cuda()
+    model = model.half().cuda()
     model.eval()
 
     return model, tokenizer, image_processor
@@ -78,6 +78,8 @@ def validate_image_file(image_path):
         print(f"Error: {image_path} is not a valid image file. {e}")
         return False
 
+
+# during v1 version, temperature=0.2, top_p=None
 
 def run_vqa_model(
     image_file, question, conv_mode="aya", temperature=0.3, top_p=0.9, num_beams=1
@@ -134,7 +136,7 @@ def run_vqa_model(
     with torch.inference_mode():
         output_ids = model.generate(
             input_ids,
-            images=image_tensor.unsqueeze(0).cuda(),
+            images=image_tensor.unsqueeze(0).half().cuda(),
             image_sizes=[image.size],
             do_sample=True if temperature > 0 else False,
             temperature=temperature,
