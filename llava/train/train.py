@@ -337,6 +337,12 @@ def preprocess_multimodal(
             replace_token = DEFAULT_IMAGE_TOKEN
             if data_args.mm_use_im_start_end:
                 replace_token = DEFAULT_IM_START_TOKEN + replace_token + DEFAULT_IM_END_TOKEN
+            
+            print(f"Type of sentence['value']: {type(sentence['value'])}")
+            print(f"Content: {sentence['value']}")
+
+            if isinstance(sentence["value"], list):
+                sentence["value"] = "".join(sentence["value"])
             sentence["value"] = sentence["value"].replace(DEFAULT_IMAGE_TOKEN, replace_token)
 
     return sources
