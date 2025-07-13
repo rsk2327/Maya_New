@@ -6,6 +6,10 @@
 
 
 <b>Multimodal LLM supporting 8 languages including English, Chinese, French, Spanish, Russian, Japanese, Arabic, Hindi</b>
+## Update
+- [5/30/2025] Two papers accepted at CVPR Workshops 2025
+  - [Understanding and Mitigating Toxicity](https://arxiv.org/abs/2505.06356) as Oral for RGenAI Workshop 2025
+  - [Behind Maya](https://arxiv.org/abs/2505.08910) at VLMs4ALL Workshop 2025
 
 ## Contents
 - [Maya: Multimodal Multilingual LLM](#maya-multimodal-multilingual-llm)
