@@ -21,29 +21,10 @@ class QFormerProjector(nn.Module):
         self.text_hidden_size = config.hidden_size
         
         # Create Q-Former configuration
-        if qformer_type == 'blip2':
+        if qformer_type in ['blip2','instructblip']:
             self.qformer_config = Blip2QFormerConfig(
                 vocab_size=30522,  # BERT vocab size
                 hidden_size=768,   # Standard BERT hidden size
-                num_hidden_layers=12,
-                num_attention_heads=12,
-                intermediate_size=3072,
-                hidden_act="gelu",
-                hidden_dropout_prob=0.1,
-                attention_probs_dropout_prob=0.1,
-                max_position_embeddings=512,
-                initializer_range=0.02,
-                layer_norm_eps=1e-12,
-                pad_token_id=0,
-                position_embedding_type="absolute",
-                cross_attention_frequency=2,
-                encoder_hidden_size=self.vision_hidden_size,
-            )
-        elif qformer_type == 'instructblip':
-            # InstructBLIP uses similar config but with some modifications
-            self.qformer_config = Blip2QFormerConfig(
-                vocab_size=30522,
-                hidden_size=768,
                 num_hidden_layers=12,
                 num_attention_heads=12,
                 intermediate_size=3072,
